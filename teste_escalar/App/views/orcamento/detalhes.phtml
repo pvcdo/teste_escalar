@@ -1,0 +1,70 @@
+<?php session_start(); ?>
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+
+  <h1>Orçamento</h1>
+
+  <nav>
+    <a href="/">Início</a>
+    >
+    <a href="/orcamento/tv">TV</a>
+    >
+    <a href="/orcamento/players">Players</a>
+  </nav>
+
+  <h2>Detalhes</h2>
+
+    <div class="form-control">
+      <h4>Formas de pagamento</h4>
+
+        <select name="forma-pagamento" id="sel-pagamentos" form="form-detalhes">
+          <option value="Mensal">Mensal</option>
+          <option value="Anual">Anual</option>
+        </select>
+
+      <h4>Quantidade de licenças</h4>
+        <select name="qtd-lic" id="sel-licencas" form="form-detalhes">
+          <option value="1">1</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="60">60</option>
+          <option value="100">100</option>
+        </select>
+
+        <h4>Plano</h4>
+
+        <select name="plano" id="sel-pagamentos" form="form-detalhes">
+          
+          <option value="">-- Selecione o plano --</option>
+          <?php foreach($lista_planos as $i => $plano){ ?>
+            <option value=<?= $plano['id'] ?>> <?= $plano['nome'] ?> </option>
+          <?php } ?>
+
+        </select>
+
+    </div>
+
+      <form class="form-control" method="POST" action="/orcamento?url=detalhes" id="form-detalhes">
+        <h4>Quantidade de planos</h4>
+        <input type="number" name="qtd-planos">
+
+        <h4>Mão de obra</h4>
+        <input type="number" name="valor-mao-obra">
+
+        <input type="submit" value="Gerar orçamento">
+      </form>
+
+  </body>
+
+</html>
+
+<?php ?>

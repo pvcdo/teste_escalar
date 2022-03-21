@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <?php require_once "estilo.php" ?>
+</head>
+
+<body>
+
+<h1>Resumo</h1>
+
+<nav>
+  <a href="/">Voltar</a>
+</nav>
+
+<h3>Resumo</h3>
+
+<?php 
+  foreach($lista_tvs as $i => $tv){
+    echo $_SESSION['qtd_tvs'][$i+1] . ' ' . $tv['nome'] . ' = R$ ' . $_SESSION['qtd_tvs'][$i+1] * $_SESSION['valores_tvs'][$i+1] . '<br>';
+  }
+  echo '<br>';
+  foreach($lista_players as $i => $player){
+    echo $_SESSION['qtd_players'][$i+1] . ' player(s) ' . $player['nome'] . ' = R$ ' . $_SESSION['qtd_players'][$i+1] * $_SESSION['valores_players'][$i+1] . '<br>';
+  }
+  echo '<br>';
+  echo $_SESSION['plano']['qtd-planos'] . ' plano(s) ' . $lista_planos[$_SESSION['plano']['plano']-1]['nome'] . ' (' . $_SESSION['forma-pagamento']  . ') = R$ ' . $_SESSION['valor_plano']['valor'] * $_SESSION['plano']['qtd-planos'] . '/mês <br>';
+  echo '<br>';
+  echo 'Mão de obra = R$ ' . $_SESSION['valor-mao-obra'];
+  
+?>
+
+<h2>Orçamento</h2>
+
+<p>Investimento inicial (valor no primeiro mês): R$ <?= (float)$ii ?> </p> 
+<p>Mensalidade (valor a partir do segundo mês): R$ <?= (float)$mensalidade ?> </p>
+
+<?= "<br><br><br><br><br><br>" ?>
+
+<div id="valor">
+  <?php for($mes = 1; $mes<13; $mes++){
+    if($mes === 1){
+      echo "<div>$ii";
+    }else{
+      echo "<div>$mensalidade";
+    }
+    echo '</div><div id="divisao"></div>';
+  }
+  ?>
+</div>
+<div id="grafico">
+  <?php 
+    for($mes = 1; $mes<13; $mes++){
+      if($mes === 1){
+        echo '<div id="primeiro">';
+      }else{
+        echo '<div>';
+      }
+      echo '</div><div id="divisao"></div>';
+    }
+  ?>
+</div>
+<div id="tempo">
+  <?php for($mes = 1; $mes<13; $mes++){
+    echo '<div>' . $mes . 'º mês </div>';
+  }
+  ?>
+</div>
+
+</body>
+</html>

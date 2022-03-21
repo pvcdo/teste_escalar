@@ -1,0 +1,38 @@
+<?php 
+
+  session_start();
+  
+?>
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+
+  <h1>Orçamento</h1>
+
+  <nav>
+    <a href="/">Início</a>
+  </nav>
+
+  <h2>Televisores</h2>
+
+    <form class="form-control" method="POST" action="/orcamento?url=tvs">
+      <?php foreach($lista_tvs as $i => $tv){ ?>
+        <h4><?= $tv['nome'] ?></h4>
+        <?php $id =  $tv['id']?>
+        <input type="number" min="0" max="10" value="<?php print_r($_SESSION['qtd_tvs'][$id]) ?>" name="<?= $tv['id']?>"/>
+      <?php } ?>
+
+      <input type="submit" value="Players">
+
+    </form>
+
+  </body>
+
+</html>
+
+<?php ?>

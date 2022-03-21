@@ -1,0 +1,36 @@
+<?php session_start(); ?>
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="../../../css/style.css">
+</head>
+
+<body>
+
+  <h1>Orçamento</h1>
+
+  <nav>
+    <a href="/">Início</a>
+    >
+    <a href="/orcamento/tv">TV</a>
+  </nav>
+
+  <h2>Players</h2>
+
+    <form class="form-control" method="POST" action="/orcamento?url=players">
+      <?php foreach($lista_players as $i => $players){ ?>
+        <h4><?= $players['nome'] ?></h4>
+        <?php $id =  $players['id']?>
+        <input type="number" min="0" max="10" value="<?php print_r($_SESSION['qtd_players'][$id]) ?>" name="<?= $players['id']?>"/>
+      <?php } ?>
+
+      <input type="submit" value="Detalhes">
+
+    </form>
+
+  </body>
+
+</html>
+
+<?php ?>
